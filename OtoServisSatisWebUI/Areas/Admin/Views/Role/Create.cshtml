@@ -1,0 +1,13 @@
+﻿@model Rol
+
+<h1 class="bg-primary bg-opacity-75 py-3 text-bg-dark text-center"> Yeni Kullanıcı Rol'ü' Eklemek İçin</h1>
+<p class="fs-5">Servis ve satış prosedürleri için kullanıcı yetkilendirilmesi için kullanılır</p>
+<form method="post">
+    <div class="mb-3 pb-3">
+        <label asp-for="@Model.Adi">Yeni Rol Adı</label>
+        <input class="" type="text" asp-for="@Model.Adi" />
+    </div>
+    
+    <button class="btn btn-success" type="submit">Yeni Rol Ekle</button>
+    <a class="btn btn-primary" asp-controller="Role" asp-action="Index">Rol Anasayfasına Geri Dön</a>
+</form>

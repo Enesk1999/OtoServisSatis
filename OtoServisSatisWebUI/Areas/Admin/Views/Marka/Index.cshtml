@@ -1,0 +1,44 @@
+﻿@model IEnumerable<OtoServisSatis.Entities.Marka>
+
+
+<h1 class="text-center mb-4 bg-warning opacity-75 py-3">Marka Yönetim Paneli</h1>
+
+<p>
+    <a class="btn btn-sm btn-primary" asp-action="Create">Yeni Marka Ekle</a>
+</p>
+@if(Model.Any()!=false){
+    <table class="table table-hover table-active">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adi)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adi)
+                    </td>
+                    <td>
+                        <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">Marka Düzenle</a> |
+                        <a class="btn btn-sm btn-danger" asp-controller="Marka" asp-action="Delete" asp-route-id="@item.Id">Marka Kaldır</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+else{
+    <p class="text-bg-danger text-lg-center py-3">Gösterilecek Herhangi Bir Marka Yoktur...</p>
+}

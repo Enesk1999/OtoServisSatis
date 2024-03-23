@@ -1,0 +1,66 @@
+﻿@model OtoServisSatis.Entities.Kullanici
+
+
+
+<h1>Kullanici Yönetim Panel Güncelleme</h1>
+
+<h4>Kullanici</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group mb-3">
+                <label asp-for="Adi" class="control-label"></label>
+                <input asp-for="Adi" class="form-control" />
+                <span asp-validation-for="Adi" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Soyadi" class="control-label"></label>
+                <input asp-for="Soyadi" class="form-control" />
+                <span asp-validation-for="Soyadi" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="EMail" class="control-label"></label>
+                <input asp-for="EMail" class="form-control" />
+                <span asp-validation-for="EMail" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="KullaniciAdi" class="control-label"></label>
+                <input asp-for="KullaniciAdi" class="form-control" />
+                <span asp-validation-for="KullaniciAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Sifre" class="control-label"></label>
+                <input asp-for="Sifre" class="form-control" />
+                <span asp-validation-for="Sifre" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Telefon" class="control-label"></label>
+                <input asp-for="Telefon" class="form-control" />
+                <span asp-validation-for="Telefon" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check mb-3">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AktifMi" /> @Html.DisplayNameFor(model => model.AktifMi)
+                </label>
+            </div>
+            <div hidden class="form-group mb-3">
+                <label asp-for="EklenmeTarihi" class="control-label"></label>
+                <input asp-for="EklenmeTarihi" class="form-control" />
+                <span asp-validation-for="EklenmeTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="RolId" class="control-label"></label>
+                <select asp-for="RolId" class="form-select" asp-items="ViewBag.RolId"></select>
+                <span asp-validation-for="RolId" class="text-danger"></span>
+            </div>
+            <div class=" mt-3">
+                <button type="submit" class=" btn btn-success ">Kullanıcı Güncelle</button>
+                <a class=" btn btn-primary" asp-action="Index">Kullanıcı Sayfasına Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+

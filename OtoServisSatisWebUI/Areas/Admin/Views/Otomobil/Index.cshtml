@@ -1,0 +1,71 @@
+﻿@model IEnumerable<OtoServisSatis.Entities.Arac>
+
+ <h2 class="text-center">Araçlar Listesi</h2>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Yeni Araç Ekle</a>
+</p>
+<table class="table table-active">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Renk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fiyat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KasaTipi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModelYili)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SatistaMi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Marka)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Renk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fiyat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KasaTipi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelYili)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SatistaMi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aciklama)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marka.Adi)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Araç Düzenle</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Araç Kaldır</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

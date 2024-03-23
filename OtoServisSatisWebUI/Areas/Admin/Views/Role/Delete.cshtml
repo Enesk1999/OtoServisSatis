@@ -1,0 +1,16 @@
+﻿@model Rol
+
+<h2>Mevcut @Model.Adi Rolü Silmek İstediğinize Emin misiniz?</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label class="form-label">Id</label>
+        <input class="form-input" readonly asp-for="@Model.Id" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Adi</label>
+        <input class="form-input" readonly asp-for="@Model.Adi" />
+    </div>
+    <button class="btn btn-danger">Rolü Kaldır</button>
+    <a class="btn btn-primary" asp-controller="Role" asp-action="Index">Rol Anasayfasına Geri Dön</a>
+</form>

@@ -1,0 +1,22 @@
+﻿@model OtoServisSatis.Entities.Marka
+
+<h3>@Model.Adi Adında ki Markayı Silmek İstediğinizden Emin misiniz?</h3>
+<div>
+    <h4>Marka</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Adi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Adi)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Markayı Kaldır" class="btn btn-danger" /> |
+        <a class="btn btn-primary" asp-action="Index">Marka Sayfasına Geri Dön</a>
+    </form>
+</div>
+ 
