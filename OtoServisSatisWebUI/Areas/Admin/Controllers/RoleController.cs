@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Nest;
 using OtoServisSatis.Entities;
 using OtoServisSatis.Service.Abstract;
 
 namespace OtoServisSatisWebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+
+    [Area("Admin"), Authorize(Policy = "AdminPolicy")]
     public class RoleController : Controller
     {
         private readonly IService<Rol> serviceRol;

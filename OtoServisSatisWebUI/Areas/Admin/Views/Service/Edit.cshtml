@@ -1,0 +1,76 @@
+﻿@model OtoServisSatis.Entities.Servis
+
+<h4>Servis İşlemlerini Güncelleme Ekranı</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="ServisGelisTarihi" class="control-label"></label>
+                <input asp-for="ServisGelisTarihi" class="form-control" />
+                <span asp-validation-for="ServisGelisTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AracSorunu" class="control-label"></label>
+                <input asp-for="AracSorunu" class="form-control" />
+                <span asp-validation-for="AracSorunu" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServisUcreti" class="control-label"></label>
+                <input asp-for="ServisUcreti" class="form-control" />
+                <span asp-validation-for="ServisUcreti" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServisCikisTarihi" class="control-label"></label>
+                <input asp-for="ServisCikisTarihi" class="form-control" />
+                <span asp-validation-for="ServisCikisTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YapılanIslemler" class="control-label"></label>
+                <input asp-for="YapılanIslemler" class="form-control" />
+                <span asp-validation-for="YapılanIslemler" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="GarantiKapsamındaMı" /> @Html.DisplayNameFor(model => model.GarantiKapsamındaMı)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="AracPlaka" class="control-label"></label>
+                <input asp-for="AracPlaka" class="form-control" />
+                <span asp-validation-for="AracPlaka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Marka" class="control-label"></label>
+                <input asp-for="Marka" class="form-control" />
+                <span asp-validation-for="Marka" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Modeli" class="control-label"></label>
+                <input asp-for="Modeli" class="form-control" />
+                <span asp-validation-for="Modeli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KasaTipi" class="control-label"></label>
+                <input asp-for="KasaTipi" class="form-control" />
+                <span asp-validation-for="KasaTipi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SaseNo" class="control-label"></label>
+                <input asp-for="SaseNo" class="form-control" />
+                <span asp-validation-for="SaseNo" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Acikalama" class="control-label"></label>
+                <input asp-for="Acikalama" class="form-control" />
+                <span asp-validation-for="Acikalama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Servis Güncelle" class="btn btn-success" />
+                <a class="btn btn-primary" asp-action="Index">Servis Sayfasına Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -16,9 +16,16 @@ namespace OtoServisSatis.Entities
         public string ModelYili { get; set; }
 
         [Display(Name ="Satşta mı?")]
-        public bool SatistaMi { get; set; }
+        public bool SatistaMi { get; set; }     //Satış sayfası için araç gösterme
+        public bool Anasayfa { get; set; }      //Anasayfada  olan araçları gösterme
         [StringLength(300)]
         public string Aciklama { get; set; }
+        [StringLength(100)]
+        public string? Resim1 { get; set; }
+        [StringLength(100)]
+        public string? Resim2 { get; set; }
+        [StringLength(100)]
+        public string? Resim3 { get; set; }
         public int MarkaId { get; set; }
         public virtual Marka? Marka { get; set; }    //Araç sınıfı ile marka sınıfı arasındaki bağlantı
     }

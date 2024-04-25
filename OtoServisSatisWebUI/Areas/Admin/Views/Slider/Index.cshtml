@@ -1,0 +1,48 @@
+﻿@model IEnumerable<OtoServisSatis.Entities.Slider>
+
+<h2 class="bg-black opacity-75 text-center text-light py-4">Slider Liste Ekranı</h2>
+<p>
+    <a class="btn btn-primary" asp-action="Create">Yeni Slider Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Resim)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Link)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Baslik)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aciklama)
+            </td>
+            <td>
+                <img src="/Img/Sliders/@item.Resim" alt="" height="75" width="100">
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Link)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Kaldır</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+

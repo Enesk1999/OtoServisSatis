@@ -32,8 +32,11 @@ namespace OtoServisSatis.Data.Migrations
 
                     b.Property<string>("Aciklama")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
+
+                    b.Property<bool>("Anasayfa")
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("Fiyat")
                         .HasColumnType("decimal(18,2)");
@@ -59,6 +62,18 @@ namespace OtoServisSatis.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Resim1")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Resim2")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Resim3")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("SatistaMi")
                         .HasColumnType("bit");
@@ -129,7 +144,7 @@ namespace OtoServisSatis.Data.Migrations
                             Adi = "Enes",
                             AktifMi = true,
                             EMail = "admin@otoservis.com",
-                            EklenmeTarihi = new DateTime(2024, 3, 18, 17, 10, 23, 72, DateTimeKind.Local).AddTicks(4390),
+                            EklenmeTarihi = new DateTime(2024, 3, 28, 16, 33, 45, 516, DateTimeKind.Local).AddTicks(4496),
                             KullaniciAdi = "admin",
                             RolId = 1,
                             Sifre = "12345",
@@ -168,24 +183,25 @@ namespace OtoServisSatis.Data.Migrations
 
                     b.Property<string>("Adi")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("Adres")
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
-                    b.Property<int>("AracId")
+                    b.Property<int?>("AracId")
                         .HasColumnType("int");
 
                     b.Property<string>("Mail")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("Soyadi")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("TcNo")
                         .HasMaxLength(11)
@@ -200,6 +216,19 @@ namespace OtoServisSatis.Data.Migrations
                     b.HasIndex("AracId");
 
                     b.ToTable("Musteriler");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Aciklama = "Yok",
+                            Adi = "Ahmet",
+                            Adres = "İstanbul BeylikDüzü Gaziosmanpaşa bulvarı no:32/11",
+                            Mail = "ahmet4554@gmail.com",
+                            Soyadi = "Sayılı",
+                            TcNo = "32419392922",
+                            Telefon = "5554442134"
+                        });
                 });
 
             modelBuilder.Entity("OtoServisSatis.Entities.Rol", b =>
@@ -309,6 +338,35 @@ namespace OtoServisSatis.Data.Migrations
                     b.ToTable("Servisler");
                 });
 
+            modelBuilder.Entity("OtoServisSatis.Entities.Slider", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Aciklama")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Baslik")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Link")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Resim")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sliderlar");
+                });
+
             modelBuilder.Entity("OtoServisSatis.Entities.Arac", b =>
                 {
                     b.HasOne("OtoServisSatis.Entities.Marka", "Marka")
@@ -333,9 +391,7 @@ namespace OtoServisSatis.Data.Migrations
                 {
                     b.HasOne("OtoServisSatis.Entities.Arac", "Arac")
                         .WithMany()
-                        .HasForeignKey("AracId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("AracId");
 
                     b.Navigation("Arac");
                 });

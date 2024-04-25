@@ -24,7 +24,7 @@ namespace OtoServisSatis.Entities
         public string Telefon { get; set; }
         [Display(Name ="Açıklama")]
         public string? Aciklama { get; set; }
-        public int AracId { get; set; }
+        public int? AracId { get; set; }
         public virtual Arac? Arac { get; set; }  //Müşteri sınıfı ile araç sınıfı arasındaki bağlantı
     }
 }

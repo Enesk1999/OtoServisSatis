@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OtoServisSatis.Entities;
 using OtoServisSatis.Service.Abstract;
 
 namespace OtoServisSatisWebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+
+    [Area("Admin"), Authorize(Policy = "UserPolicy")]
     public class ServiceController : Controller
     {
         private readonly IService<Servis> serviceServis;

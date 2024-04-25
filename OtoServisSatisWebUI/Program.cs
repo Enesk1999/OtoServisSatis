@@ -1,6 +1,7 @@
 using OtoServisSatis.Data;
 using OtoServisSatis.Service.Abstract;
 using OtoServisSatis.Service.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,21 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<OtoDatabaseContext>();
 builder.Services.AddTransient(typeof(IService<>),typeof(Service<>)); //Servislerde Iservice ve service (repositoryden türeyen implementleri ekliyorum)
+builder.Services.AddTransient<ICarService, CarService>();           
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+{
+    x.LoginPath = "/Admin/Login";
+    x.LogoutPath = "/Admin/Logout";
+    x.AccessDeniedPath = "/AccessDenied";
+    x.Cookie.Name = "Admin";
+    x.Cookie.MaxAge = TimeSpan.FromDays(7);
+    x.Cookie.IsEssential = true;
+});     //Cookies Login Ýþlemleri
+builder.Services.AddAuthorization(x =>
+{
+    x.AddPolicy("AdminPolicy", policy => policy.RequireClaim("Role", "Admin"));
+    x.AddPolicy("UserPolicy", policy => policy.RequireClaim("Role", "User"));
+});
 
 var app = builder.Build();
 
@@ -23,7 +39,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.UseAuthentication();        //Authentication iþlemi
 app.UseAuthorization();
 
 app.MapControllerRoute(

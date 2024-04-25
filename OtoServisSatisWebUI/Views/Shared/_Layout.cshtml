@@ -26,9 +26,21 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="List">Satıştaki Araçlarımız</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="Main" asp-action="Index">Panele</a>
                         </li>
                     </ul>
+                    
+                        <form asp-action="Search" asp-controller="Home" method="get" class="d-flex" role="search">
+                            <input name="searching" class="form-control me-2" type="search" placeholder="Araç Ara" aria-label="Search">
+                        </form>
+                        <a class="btn btn-outline-success" href="/Login">Giriş Yap</a>
+
+                        <button class="btn btn-outline-success me-2 ms-2" href="/Login">Kaydol</button>
+                   
+                   
                 </div>
             </div>
         </nav>
@@ -37,13 +49,10 @@
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+        </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - OtoServisSatisWebUI - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

@@ -1,0 +1,87 @@
+﻿@model OtoServisSatis.Entities.Servis
+
+<h3>Mevcut Servis İşlemini Silmek İstediğiizden Emin misiniz?</h3>
+<div>
+    <h4>Servis</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ServisGelisTarihi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ServisGelisTarihi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AracSorunu)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AracSorunu)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ServisUcreti)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ServisUcreti)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ServisCikisTarihi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ServisCikisTarihi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.YapılanIslemler)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.YapılanIslemler)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.GarantiKapsamındaMı)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.GarantiKapsamındaMı)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AracPlaka)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AracPlaka)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Marka)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Marka)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Modeli)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Modeli)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.KasaTipi)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.KasaTipi)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SaseNo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SaseNo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Acikalama)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Acikalama)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Servis İşlemini Kaldır" class="btn btn-danger" /> |
+        <a class="btn btn-primary" asp-action="Index">Servis Listesine Geri Dön</a>
+    </form>
+</div>

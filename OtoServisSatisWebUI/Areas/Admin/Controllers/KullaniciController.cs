@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OtoServisSatis.Entities;
@@ -6,7 +7,7 @@ using OtoServisSatis.Service.Abstract;
 
 namespace OtoServisSatisWebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("Admin"),Authorize(Policy ="AdminPolicy")]
     public class KullaniciController : Controller
     {
         private readonly IService<Kullanici> serviceKullanici;
@@ -38,7 +39,7 @@ namespace OtoServisSatisWebUI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create(Kullanici kullanici)
         {
-            var getAllUsers = await serviceKullanici.GetAllAsync();
+            ViewBag.RolId = new SelectList(await serviceRol.GetAllAsync(), "Id", "Adi");
             if (ModelState.IsValid)
             {
                 try
@@ -78,11 +79,12 @@ namespace OtoServisSatisWebUI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Kullanici kullanici)
         {
+            ViewBag.RolId = new SelectList(await serviceRol.GetAllAsync(), "Id", "Adi");
             if (ModelState.IsValid)
             {
                 try
                 {
-                    ViewBag.RolId = new SelectList(await serviceRol.GetAllAsync(), "Id", "Adi");
+                    
                     serviceKullanici.Update(kullanici);
                     await serviceKullanici.SaveAsync();
                     return RedirectToAction(nameof(Index));

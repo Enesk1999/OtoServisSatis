@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using OtoServisSatis.Entities;
@@ -6,7 +7,8 @@ using OtoServisSatis.Service.Abstract;
 
 namespace OtoServisSatisWebUI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+
+    [Area("Admin"), Authorize(Policy = "UserPolicy")]
     public class MusteriController : Controller
     {
         private readonly IService<Musteri> serviceMusteri;

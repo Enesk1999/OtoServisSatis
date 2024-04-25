@@ -12,6 +12,7 @@ namespace OtoServisSatis.Data
         public DbSet<Rol> Roller { get; set; }
         public DbSet<Satis> Satislar { get; set; }
         public DbSet<Servis> Servisler { get; set; }
+        public DbSet<Slider> Sliderlar { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -48,11 +49,10 @@ namespace OtoServisSatis.Data
                 Id =1,
                 Adi="Ahmet",
                 Soyadi="Sayılı",
-                TcNo="329419392922",
+                TcNo="32419392922",
                 Mail="ahmet4554@gmail.com",
                 Adres="İstanbul BeylikDüzü Gaziosmanpaşa bulvarı no:32/11",
                 Aciklama="Yok",
-                AracId=2,
                 Telefon="5554442134",
             });
             base.OnModelCreating(modelBuilder);
